@@ -1,0 +1,33 @@
+TYPESCRIPT
+mantenere del codice con linguaggi non tipati complica la vita
+lettura non immediata senza i tipi 
+si può tradurre in javascript (attraverso i tool come vite) per la compatibilità su browser 
+
+- LINTING - regole autoimposte
+
+let count = 0; // è dichiarato tipo numero
+count = 'pippo'; // errore, numero e stringa non sono compatibili
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML
+il punto esclamativo serve per dire che non sarà null
+
+document.querySelector<HTMLImageElement>('#app')!.src
+elemento e .proprietà devono essere compatibili
+div -> innerhtml
+img -> src
+
+dentro la cartella MODEL ci vanno classi
+
+getMotiFromJson(): Promise<Motus[]> {} --- esplicitare il ritorno all'inizio della funzione
+
+
+ESERCIZI voglio morire
+- tasto randomMotus - this.addRandomMotus()
+(si riempie la lista con moti + date + note a caso)
+
+- usare la logica student per aggiungere motus in Typescript
+dialog con selezione di emozione, nota, data, orario
+
+- bonus: cancellazione card-motus SEI SICUROOO??? SI
+
+- navbar: icona e nome app, le funzionalità le metteremo.... se non si muore prima
