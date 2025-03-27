@@ -7,13 +7,45 @@
     <title>e-Motus</title>
   </head>
   <body>
+    <motus-bar></motus-bar>
     <motus-list></motus-list>
-    <script type="module" src="./src/components/motus-card.ts"></script>
-    <script type="module" src="./src/components/motus-list.ts"></script>
-    <script type="module" src="/src/main.ts"></script>
+    <motus-dialog id="motus-dialog"></motus-dialog>
   </body>
+  <script type="module" src="./src/components/motus-bar.ts"></script>
+  <script type="module" src="./src/components/motus-dialog.ts"></script>
+  <script type="module" src="./src/components/motus-card.ts"></script>
+  <script type="module" src="./src/components/motus-list.ts"></script>
+  <script type="module" src="./src/main.ts"></script>
 </html>
 
 
+<!-- <dialog open id="motus-dialog">
+    <form> 
+      <label for="crying">😭</label>
+      <input type="radio" name="motus" id="crying">
+      <label for="sad">😥</label>
+      <input type="radio" name="motus" id="sad">
+      <label for="neutral">😐</label>
+      <input type="radio" name="motus" id="neutral">
+      <label for="happy">🙂</label>
+      <input type="radio" name="motus" id="happy">
+      <label for="euphoric">😁</label>
+      <input type="radio" name="motus" id="euphoric">
+      <label for="note">Come ti senti?</label>
+      <textarea name="note" id="note"></textarea>
+      <button>Cancella</button>
+      <button>Ok</button>
+    </form>
+</dialog> -->
+
+<!-- <div contenteditable style="width: 200px; height: 200px; border-style: solid; overflow: scroll;">
+
+</div> -->
 
 
+<span>
+  😎
+</span>
+<span>
+  E-MOJI
+</span>

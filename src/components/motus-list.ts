@@ -1,6 +1,7 @@
 import Motus from "../model/motus";
 import MotusService from "../services/motus-service";
 import MotusCard from "./motus-card";
+import MotusDialog from "./motus-dialog";
 
 export default class MotusList extends HTMLElement {
 
@@ -15,6 +16,13 @@ export default class MotusList extends HTMLElement {
     }
 
     async connectedCallback(){
+        const dialog = document.getElementById('motus-dialog') as MotusDialog;
+        dialog.addEventListener('motus-created', (e) => {
+            const customEvent = e as CustomEvent;
+            const newMotus = customEvent.detail;
+            this.service.addMotus(newMotus);
+            this.render()
+        })
 
         this.moti = await this.service.loadMoti();
         this.styling()
@@ -25,10 +33,15 @@ export default class MotusList extends HTMLElement {
     styling(){
         const style = document.createElement('style');
         style.innerText = `
+            .grid-container{
+                height: 100%
+            }
             .grid{
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                 gap: 16px;
+                overflow: auto;
+                height: 100%
             }
             .add-btn{
                 position: absolute;
@@ -49,10 +62,12 @@ export default class MotusList extends HTMLElement {
     render(){
 
         let container = this.shadowRoot!.getElementById("container");
+        
         if (container){
             container.innerHTML='';
         } else {
             container = document.createElement('div');
+            container.classList.add('grid-container')
             /*  container.setAttribute('id', 'container'); */
             container.id = "container"
             this.shadowRoot!.appendChild(container);
@@ -65,7 +80,9 @@ export default class MotusList extends HTMLElement {
         for (let i = 0; i  < this.moti.length; i++) {
             const motus = this.moti[i];
             const card: MotusCard = document.createElement('motus-card') as MotusCard;
-            card.setAttribute("selected-motus", JSON.stringify(motus))
+            //card.setAttribute("selected-motus", JSON.stringify(motus))
+
+            card.motus = motus;
             main.appendChild(card)
         }
 
@@ -74,25 +91,14 @@ export default class MotusList extends HTMLElement {
         const addBtn = document.createElement("button");
         addBtn.classList.add("add-btn");
         addBtn.appendChild(document.createTextNode("➕"));
-        addBtn.addEventListener('click', () => this.addRandomMotus())
+        addBtn.addEventListener('click', () => this.openDialog())
         container.appendChild(addBtn);
     }
 
-    addRandomMotus() {
-        const randomMotus: Motus = {
-            id: Math.random().toString(36).substring(2, 15),
-            value: Math.floor(Math.random() * 5),
-            note: `Nota casuale ${Math.random().toString(36).substring(7)}`,
-            creationDate: Date.now(),
-            location: {
-                lat: 44.40946225320591 + Math.random() * 0.01,
-                lng: 8.934506010533006 + Math.random() * 0.01
-            }
-        };
-    
-        this.moti.push(randomMotus);
-    
-        this.render();
+    openDialog(){
+        
+        const dialog = document.getElementById('motus-dialog') as MotusDialog;
+        dialog.openMe();
     }
 
     

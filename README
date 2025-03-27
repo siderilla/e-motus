@@ -21,7 +21,7 @@ dentro la cartella MODEL ci vanno classi
 getMotiFromJson(): Promise<Motus[]> {} --- esplicitare il ritorno all'inizio della funzione
 
 
-ESERCIZI voglio morire
+ESERCIZI voglio morire 26/03
 - tasto randomMotus - this.addRandomMotus()
 (si riempie la lista con moti + date + note a caso)
 
@@ -31,3 +31,14 @@ dialog con selezione di emozione, nota, data, orario
 - bonus: cancellazione card-motus SEI SICUROOO??? SI
 
 - navbar: icona e nome app, le funzionalità le metteremo.... se non si muore prima
+
+
+ESERCIZI sono morta 27/03
+- unshift per mettere in ordine i motus (in cima l'ultimo inserito)
+
+- no more interfaccia, solo classe ovunque si usa la motus
+ogni volta che prendi la motus da json o local fai un new Motus, nuova classe
+
+- motus-bar:
+ogni volta che clicco l'ordinamento cambia
+ordine per data, ordine inverso di emoji, ordine ordinato di emoji

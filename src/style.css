@@ -1,7 +1,11 @@
-.emoticon{
-    font-size: 20px;
-    text-align: center;
+html, body{
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+}
 
-    
+motus-list{
+    display: block;
+    height: 100vh;
 }
 

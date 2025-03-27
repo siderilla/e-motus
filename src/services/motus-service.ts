@@ -21,7 +21,6 @@ export default class MotusService {
         return this.moti;
     }
 
-
     getMotiFromJson(): Promise<Motus[]>{
         return fetch('/emotions.json')
               .then(resp => resp.json())

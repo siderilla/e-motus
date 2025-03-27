@@ -2,21 +2,23 @@ import Motus from "../model/motus";
 
 export default class MotusCard extends HTMLElement{
 
+    motus!: Motus;
+
     constructor(){
         super();
         this.attachShadow({mode: 'open'});
     }
 
 
-    get motus():Motus{
-        return JSON.parse(this.getAttribute("selected-motus")!);
+    // get motus():Motus{
+    //     return JSON.parse(this.getAttribute("selected-motus")!);
 
-       /*  const motusStr = this.getAttribute('selected-motus');
-        if (motusStr) {
-            return JSON.parse(motusStr);
-        }
-        return null; */
-    }
+    //    /*  const motusStr = this.getAttribute('selected-motus');
+    //     if (motusStr) {
+    //         return JSON.parse(motusStr);
+    //     }
+    //     return null; */
+    // }
 
     connectedCallback(){
         console.log('pippo')
@@ -54,6 +56,10 @@ export default class MotusCard extends HTMLElement{
                 font-size: 20px;
                 padding: 0px 8px;
             }
+            .note{
+                font-size: 0.7em;
+                padding: 2px;
+            }
         `
         this.shadowRoot!.appendChild(style);
     }
@@ -69,7 +75,7 @@ export default class MotusCard extends HTMLElement{
                 <span>
                     ${this.fromTimeStampToDateString(this.motus.creationDate)}
                 </span>
-                <span>
+                <span class="note">
                      ${this.motus.note}
                 </span>
                 <div class="controls-container">
